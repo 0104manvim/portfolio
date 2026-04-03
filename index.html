@@ -705,6 +705,7 @@
 
     .floating-dock { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; justify-content: flex-start; }
     .icon-link {
+      position: relative;
       width: 42px;
       height: 42px;
       display: grid;
@@ -726,6 +727,30 @@
       border-color: rgba(255,255,255,0.16);
       box-shadow: 0 12px 24px rgba(0,0,0,0.22);
       color: #ffffff;
+    }
+    .icon-link::after {
+      content: attr(data-label);
+      position: absolute;
+      left: 50%;
+      bottom: calc(100% + 10px);
+      transform: translate(-50%, 8px);
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(8, 10, 9, 0.96);
+      color: #f4f7ff;
+      font-family: "Share Tech Mono", monospace;
+      font-size: 0.72rem;
+      line-height: 1;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.22s ease, transform 0.22s ease;
+    }
+    .icon-link:hover::after,
+    .icon-link:focus-visible::after {
+      opacity: 1;
+      transform: translate(-50%, 0);
     }
 
     .updates { margin-top: 24px; }
@@ -908,10 +933,10 @@
               <h3>Generally replies within 8hrs</h3>
               <p>Open for building interesting systems, product ideas, AI experiments, and fast-moving prototypes.</p>
               <div class="floating-dock">
-                <a href="https://github.com/0104manvim" target="_blank" rel="noreferrer" aria-label="GitHub" class="icon-link"><svg viewBox="0 0 24 24"><path d="M12 .5C5.65.5.5 5.66.5 12.02c0 5.08 3.29 9.38 7.86 10.9.57.1.78-.25.78-.56v-2.15c-3.2.69-3.88-1.55-3.88-1.55-.53-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.71.08-.71 1.16.08 1.76 1.2 1.76 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.72-1.55-2.56-.29-5.25-1.28-5.25-5.71 0-1.26.45-2.3 1.2-3.11-.12-.3-.52-1.5.12-3.12 0 0 .97-.31 3.17 1.19a10.9 10.9 0 0 1 5.78 0c2.2-1.5 3.16-1.2 3.16-1.2.64 1.63.24 2.83.12 3.13.74.81 1.2 1.85 1.2 3.11 0 4.44-2.69 5.42-5.26 5.7.42.36.79 1.07.79 2.16v3.2c0 .31.2.66.79.55A11.53 11.53 0 0 0 23.5 12C23.5 5.66 18.35.5 12 .5Z"/></svg></a>
-                <a href="https://linkedin.com/in/manvi-maheshwari" target="_blank" rel="noreferrer" aria-label="LinkedIn" class="icon-link"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 0 .02 5 2.5 2.5 0 0 0-.02-5ZM3 9h4v12H3V9Zm7 0h3.84v1.64h.06c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.66 4.8 6.12V21h-4v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94V21h-4V9Z"/></svg></a>
-                <a href="mailto:manvimaheshwari107@gmail.com" aria-label="Email" class="icon-link"><svg viewBox="0 0 24 24"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm0 2v.5l9 5.6 9-5.6V7l-9 5.6L3 7Z"/></svg></a>
-                <a href="https://www.instagram.com/" target="_blank" rel="noreferrer" aria-label="Instagram" class="icon-link"><svg viewBox="0 0 24 24"><path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2ZM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6Zm5.25-2.13a1.13 1.13 0 1 0 0 2.26 1.13 1.13 0 0 0 0-2.26Z"/></svg></a>
+                <a href="https://github.com/0104manvim" target="_blank" rel="noreferrer" aria-label="GitHub" data-label="GitHub" class="icon-link"><svg viewBox="0 0 24 24"><path d="M12 .5C5.65.5.5 5.66.5 12.02c0 5.08 3.29 9.38 7.86 10.9.57.1.78-.25.78-.56v-2.15c-3.2.69-3.88-1.55-3.88-1.55-.53-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.71.08-.71 1.16.08 1.76 1.2 1.76 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.72-1.55-2.56-.29-5.25-1.28-5.25-5.71 0-1.26.45-2.3 1.2-3.11-.12-.3-.52-1.5.12-3.12 0 0 .97-.31 3.17 1.19a10.9 10.9 0 0 1 5.78 0c2.2-1.5 3.16-1.2 3.16-1.2.64 1.63.24 2.83.12 3.13.74.81 1.2 1.85 1.2 3.11 0 4.44-2.69 5.42-5.26 5.7.42.36.79 1.07.79 2.16v3.2c0 .31.2.66.79.55A11.53 11.53 0 0 0 23.5 12C23.5 5.66 18.35.5 12 .5Z"/></svg></a>
+                <a href="https://linkedin.com/in/manvi-maheshwari" target="_blank" rel="noreferrer" aria-label="LinkedIn" data-label="LinkedIn" class="icon-link"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 0 .02 5 2.5 2.5 0 0 0-.02-5ZM3 9h4v12H3V9Zm7 0h3.84v1.64h.06c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.66 4.8 6.12V21h-4v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94V21h-4V9Z"/></svg></a>
+                <a href="mailto:manvimaheshwari107@gmail.com" aria-label="Email" data-label="Email" class="icon-link"><svg viewBox="0 0 24 24"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm0 2v.5l9 5.6 9-5.6V7l-9 5.6L3 7Z"/></svg></a>
+                <a href="https://www.instagram.com/" target="_blank" rel="noreferrer" aria-label="Instagram" data-label="Instagram" class="icon-link"><svg viewBox="0 0 24 24"><path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2ZM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6Zm5.25-2.13a1.13 1.13 0 1 0 0 2.26 1.13 1.13 0 0 0 0-2.26Z"/></svg></a>
               </div>
             </div>
           </div>
@@ -1159,250 +1184,6 @@
       }
     });
 
-    /*
-    const tabContent = document.getElementById("tab-content");
-    const tabButtons = document.querySelectorAll(".top-nav button[data-tab]");
-
-    const tabs = {
-      projects: `
-        <h2 class="section-head">Selected Projects</h2>
-        <div class="cards-grid">
-          <article class="card">
-            <a class="project-link" href="https://github.com/0104manvim" target="_blank" rel="noreferrer"><h3>Caste Census System</h3></a>
-            <p>Top 30 nationally at NSUT Hack Delhi. Built secure census infra with ML Aadhaar validation and blockchain-based tamper-proof IDs.</p>
-          <div class="project-range"><small style="color: var(--blue);">Impact range</small><div class="project-range-track"><div class="project-range-fill" style="--range:88%; background: linear-gradient(90deg, rgba(125,211,252,0.4), rgba(114,245,154,0.9));"></div></div></div>
-            <a class="project-cta" href="https://github.com/0104manvim" target="_blank" rel="noreferrer">View Project ↗</a>
-          </article>
-          <article class="card">
-            <a class="project-link" href="https://github.com/0104manvim" target="_blank" rel="noreferrer"><h3>Public Transport Tracking</h3></a>
-            <p>GPS-based PWA with sub-2s updates and strong offline support using service workers and optimized APIs.</p>
-          <div class="project-range"><small style="color: var(--yellow);">Realtime coverage</small><div class="project-range-track"><div class="project-range-fill" style="--range:93%; background: linear-gradient(90deg, rgba(250,204,21,0.45), rgba(114,245,154,0.82));"></div></div></div>
-            <a class="project-cta" href="https://github.com/0104manvim" target="_blank" rel="noreferrer">View Project ↗</a>
-          </article>
-          <article class="card">
-            <a class="project-link" href="https://github.com/0104manvim" target="_blank" rel="noreferrer"><h3>Threads of Truth</h3></a>
-            <p>Blockchain-powered supply chain traceability system. IIT Delhi hackathon semi-finalist (Top 25/200+ teams).</p>
-          <div class="project-range"><small style="color: var(--pink);">Trace confidence</small><div class="project-range-track"><div class="project-range-fill" style="--range:84%; background: linear-gradient(90deg, rgba(244,114,182,0.45), rgba(125,211,252,0.7));"></div></div></div>
-            <a class="project-cta" href="https://github.com/0104manvim" target="_blank" rel="noreferrer">View Project ↗</a>
-          </article>
-          <article class="card">
-            <a class="project-link" href="https://github.com/0104manvim" target="_blank" rel="noreferrer"><h3>mediQR</h3></a>
-            <p>Built pharma authentication for 1000+ products with hash verification and sub-200ms backend response time.</p>
-          <div class="project-range"><small style="color: var(--blue);">Verification quality</small><div class="project-range-track"><div class="project-range-fill" style="--range:90%; background: linear-gradient(90deg, rgba(125,211,252,0.42), rgba(244,114,182,0.62));"></div></div></div>
-            <a class="project-cta" href="https://github.com/0104manvim" target="_blank" rel="noreferrer">View Project ↗</a>
-          </article>
-        </div>
-        <div class="achievement-orbit">
-          <div class="achievement-node"><strong>Top 30</strong><span>NSUT Hack</span></div>
-          <div class="achievement-node"><strong>10K+</strong><span>Users</span></div>
-          <div class="achievement-node"><strong>Top 25</strong><span>IITD Semi</span></div>
-          <div class="achievement-node"><strong>&lt;200ms</strong><span>Latency</span></div>
-        </div>`,
-      about: `
-        <h2 class="section-head">About Me</h2>
-        <p class="lead">I am a college student and full-stack developer who enjoys building practical systems that feel clean, fast, and reliable. I work across React.js, Node.js, databases, and backend architecture, with hands-on experience in ML and blockchain integrations. I like solving real engineering problems and turning ideas into polished working products.</p>
-        <div class="skills-grid">
-          <div class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++" /><span>C/C++</span></div>
-          <div class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" /><span>Python</span></div>
-          <div class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" /><span>Java</span></div>
-          <div class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" /><span>JavaScript</span></div>
-          <div class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React.js" /><span>React.js</span></div>
-          <div class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" /><span>Node.js</span></div>
-          <div class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" alt="Express" /><span>Express</span></div>
-          <div class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" alt="FastAPI" /><span>FastAPI</span></div>
-          <div class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" /><span>MongoDB</span></div>
-          <div class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" /><span>PostgreSQL</span></div>
-          <div class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" /><span>MySQL</span></div>
-          <div class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" alt="Firebase" /><span>Firebase</span></div>
-        </div>
-        <div class="achievement-orbit">
-          <div class="achievement-node"><strong>Top 30</strong><span>NSUT Hack</span></div>
-          <div class="achievement-node"><strong>10K+</strong><span>Users</span></div>
-          <div class="achievement-node"><strong>Top 25</strong><span>IITD Semi</span></div>
-          <div class="achievement-node"><strong>&lt;200ms</strong><span>Backend</span></div>
-        </div>`,
-      connect: `
-        <h2 class="section-head">Let's Connect</h2>
-        <div class="connect-grid">
-          <form class="card" onsubmit="event.preventDefault(); alert('Use mail button for now');">
-            <label>Full Name<input required /></label>
-            <label>Email<input type="email" required /></label>
-            <label>Message<textarea required></textarea></label>
-            <button type="submit" class="submit-btn">Submit</button>
-          </form>
-          <div class="social-card">
-            <h3>Generally replies within 8hrs</h3>
-            <p>Open for building interesting systems, product ideas, AI experiments, and fast-moving prototypes.</p>
-            <div class="floating-dock">
-              <a href="https://github.com/0104manvim" target="_blank" rel="noreferrer" aria-label="GitHub" class="icon-link"><svg viewBox="0 0 24 24"><path d="M12 .5C5.65.5.5 5.66.5 12.02c0 5.08 3.29 9.38 7.86 10.9.57.1.78-.25.78-.56v-2.15c-3.2.69-3.88-1.55-3.88-1.55-.53-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.71.08-.71 1.16.08 1.76 1.2 1.76 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.72-1.55-2.56-.29-5.25-1.28-5.25-5.71 0-1.26.45-2.3 1.2-3.11-.12-.3-.52-1.5.12-3.12 0 0 .97-.31 3.17 1.19a10.9 10.9 0 0 1 5.78 0c2.2-1.5 3.16-1.2 3.16-1.2.64 1.63.24 2.83.12 3.13.74.81 1.2 1.85 1.2 3.11 0 4.44-2.69 5.42-5.26 5.7.42.36.79 1.07.79 2.16v3.2c0 .31.2.66.79.55A11.53 11.53 0 0 0 23.5 12C23.5 5.66 18.35.5 12 .5Z"/></svg></a>
-              <a href="https://linkedin.com/in/manvi-maheshwari" target="_blank" rel="noreferrer" aria-label="LinkedIn" class="icon-link"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 0 .02 5 2.5 2.5 0 0 0-.02-5ZM3 9h4v12H3V9Zm7 0h3.84v1.64h.06c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.66 4.8 6.12V21h-4v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94V21h-4V9Z"/></svg></a>
-              <a href="mailto:manvimaheshwari107@gmail.com" aria-label="Email" class="icon-link"><svg viewBox="0 0 24 24"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm0 2v.5l9 5.6 9-5.6V7l-9 5.6L3 7Z"/></svg></a>
-              <a href="https://www.instagram.com/" target="_blank" rel="noreferrer" aria-label="Instagram" class="icon-link"><svg viewBox="0 0 24 24"><path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2ZM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6Zm5.25-2.13a1.13 1.13 0 1 0 0 2.26 1.13 1.13 0 0 0 0-2.26Z"/></svg></a>
-            </div>
-          </div>
-        </div>`,
-      resume: `
-        <h2 class="section-head">Resume</h2>
-        <div class="resume-grid">
-          <div class="resume-stack">
-            <article class="resume-card">
-              <div class="resume-header">
-                <div>
-                  <h3>Manvi Maheshwari</h3>
-                  <p>College Student | Full-Stack Developer | IT Undergraduate</p>
-                </div>
-                <div class="resume-meta">
-                  <span>+91 9315176276</span>
-                  <span>manvimaheshwari107@gmail.com</span>
-                  <span>linkedin.com/in/manvi-maheshwari</span>
-                  <span>github.com/0104manvim</span>
-                </div>
-              </div>
-              <p>Information Technology undergraduate skilled in full-stack development, system design, and data structures & algorithms. Built scalable applications using React.js, Node.js, and MongoDB with hands-on experience in ML and blockchain integrations. Recognized at national hackathons for developing secure, real-world data systems and actively seeking software engineering internship roles.</p>
-              <div class="resume-actions">
-                <a class="project-cta" href="/resume.pdf" target="_blank" rel="noreferrer">Open Full PDF</a>
-                <a class="secondary-btn" href="/resume.pdf" download>Download PDF</a>
-              </div>
-            </article>
-            <article class="resume-card">
-              <h3>Projects</h3>
-              <div class="resume-entry">
-                <div class="resume-entry-head">
-                  <strong>Caste Census System</strong>
-                  <span>Python, ML, Blockchain, Node.js | NSUT Hack Delhi</span>
-                </div>
-                <ul class="resume-list">
-                  <li>Selected among Top 30 teams nationally; built a scalable and secure digital census platform for structured demographic data collection.</li>
-                  <li>Developed ML-based Aadhaar image verification to validate identities and reduce duplicate or fraudulent entries.</li>
-                  <li>Implemented SHA-256 blockchain hashing to generate tamper-proof unique IDs ensuring data immutability and integrity.</li>
-                  <li>Designed role-based citizen/admin portals with structured state-wise, caste, and sub-caste data categorization.</li>
-                  <li>Delivered real-time analytics dashboards enabling actionable insights for data-driven governance and policy planning.</li>
-                </ul>
-              </div>
-              <div class="resume-entry">
-                <div class="resume-entry-head">
-                  <strong>Real-Time Public Transport Tracking System</strong>
-                  <span>Node.js, MongoDB</span>
-                </div>
-                <ul class="resume-list">
-                  <li>Built GPS-based PWA supporting 10K+ users with sub-2s real-time updates and optimized bandwidth usage.</li>
-                  <li>Developed admin dashboard for live fleet tracking and route analytics via REST APIs.</li>
-                  <li>Achieved 95% offline functionality using service workers for low-connectivity environments.</li>
-                </ul>
-              </div>
-              <div class="resume-entry">
-                <div class="resume-entry-head">
-                  <strong>Threads of Truth | Supply Chain Traceability</strong>
-                  <span>React.js, Node.js, Blockchain</span>
-                </div>
-                <ul class="resume-list">
-                  <li>Semi-finalist at IIT Delhi Hackathon, finishing in the Top 25 out of 200+ teams with a blockchain-based traceability solution.</li>
-                  <li>Reduced frontend overhead by 60% through optimized state management and efficient API handling.</li>
-                  <li>Implemented digital signature verification to authenticate product origin and prevent counterfeiting.</li>
-                </ul>
-              </div>
-              <div class="resume-entry">
-                <div class="resume-entry-head">
-                  <strong>mediQR | Pharma Authentication</strong>
-                  <span>Node.js, MongoDB</span>
-                </div>
-                <ul class="resume-list">
-                  <li>Developed hash-based verification system for 1000+ pharmaceutical products ensuring authenticity.</li>
-                  <li>Achieved sub-200ms API response time under concurrent usage through optimized backend design.</li>
-                </ul>
-              </div>
-              <div class="resume-entry">
-                <div class="resume-entry-head">
-                  <strong>ONDC | BECon'25 Hackathon</strong>
-                  <span>System Design | IIT Delhi</span>
-                </div>
-                <ul class="resume-list">
-                  <li>Designed scalable digital commerce architecture focused on distributed systems and high availability.</li>
-                  <li>Collaborated in a team to present technical solutions addressing real-world scalability challenges.</li>
-                </ul>
-              </div>
-            </article>
-          </div>
-          <div class="resume-stack">
-            <article class="resume-card">
-              <h3>Education</h3>
-              <div class="resume-entry-head">
-                <strong>Maharaja Agrasen Institute of Technology, Delhi</strong>
-                <span>B.Tech in Information Technology</span>
-              </div>
-              <ul class="resume-list">
-                <li>CGPA: 9.054 / 10.0</li>
-                <li>Expected Graduation: 2028</li>
-                <li>Coursework: DSA, DBMS, OOP, OS, CN</li>
-              </ul>
-            </article>
-            <article class="resume-card">
-              <h3>Technical Skills</h3>
-              <div class="resume-tags">
-                <span class="resume-tag">C</span>
-                <span class="resume-tag">C++</span>
-                <span class="resume-tag">Python</span>
-                <span class="resume-tag">Java</span>
-                <span class="resume-tag">JavaScript</span>
-                <span class="resume-tag">SQL</span>
-                <span class="resume-tag">HTML</span>
-                <span class="resume-tag">CSS</span>
-                <span class="resume-tag">React.js</span>
-                <span class="resume-tag">Node.js</span>
-                <span class="resume-tag">Express.js</span>
-                <span class="resume-tag">FastAPI</span>
-                <span class="resume-tag">PostgreSQL</span>
-                <span class="resume-tag">MySQL</span>
-                <span class="resume-tag">MongoDB</span>
-                <span class="resume-tag">Firebase</span>
-                <span class="resume-tag">Git</span>
-                <span class="resume-tag">GitHub</span>
-                <span class="resume-tag">VS Code</span>
-                <span class="resume-tag">Postman</span>
-                <span class="resume-tag">System Design</span>
-                <span class="resume-tag">Backend Development</span>
-              </div>
-            </article>
-            <article class="resume-card">
-              <h3>Achievements</h3>
-              <ul class="resume-list">
-                <li>Top 30 at NSUT Hack Delhi for designing a secure ML-integrated and blockchain-backed census platform solving real-world data authenticity challenges.</li>
-                <li>Semi-finalist at IIT Delhi Hackathon, placing Top 25 out of 200+ teams for a scalable blockchain-based supply chain traceability system.</li>
-                <li>Maintained a CGPA of 9.054, showing consistent academic performance across core computer science subjects.</li>
-                <li>Solved 300+ DSA problems on LeetCode across arrays, trees, graphs, and dynamic programming.</li>
-              </ul>
-            </article>
-            <article class="resume-card">
-              <h3>Quick Links</h3>
-              <div class="resume-meta">
-                <span>Email: manvimaheshwari107@gmail.com</span>
-                <span>GitHub: github.com/0104manvim</span>
-                <span>LinkedIn: linkedin.com/in/manvi-maheshwari</span>
-                <span>Last updated: March 2026</span>
-              </div>
-            </article>
-          </div>
-        </div>`,
-    };
-
-    function setTab(tab) {
-      tabContent.innerHTML = tabs[tab];
-      tabButtons.forEach((button) => {
-        button.classList.toggle("active", button.dataset.tab === tab && !button.classList.contains("nav-logo"));
-      });
-      const tabTop = tabContent.getBoundingClientRect().top + window.scrollY - 110;
-      window.scrollTo({ top: Math.max(tabTop, 0), behavior: "smooth" });
-    }
-
-    tabButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        const tab = button.dataset.tab;
-        if (tab) setTab(tab);
-      });
-    });
-
-    setTab("projects");
-    */
 
     const navButtons = document.querySelectorAll(".top-nav button[data-target]");
     const contentSections = [...document.querySelectorAll(".content-section")];
